@@ -79,12 +79,14 @@
 
 
 
-<meta name="description" content="心有山海，静而无边">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xiaoning&#39;s Home">
-<meta property="og:url" content="https://xnfan.github.io/index.html">
+<meta name="description" content="语言模型学习语言模型 (Language Model) 用来判断一个语句是否符合语义。在实际应用中，常常利用概率来解决这一问题。 给定一个句子 $s$，由 $n$ 个单词 $w_1, w_2, w_3,…,w_n$ 组成，为了判断这个句子是否通顺，可以利用$p(s) &#x3D; p(w_1, w_2, w_3,…,w_n)$ 来表示，即这个单词序列出现的概率。 如：$p( It\ is\ good) &amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语言模型学习">
+<meta property="og:url" content="https://xnfan.github.io/2020/01/14/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Xiaoning&#39;s Home">
-<meta property="og:description" content="心有山海，静而无边">
+<meta property="og:description" content="语言模型学习语言模型 (Language Model) 用来判断一个语句是否符合语义。在实际应用中，常常利用概率来解决这一问题。 给定一个句子 $s$，由 $n$ 个单词 $w_1, w_2, w_3,…,w_n$ 组成，为了判断这个句子是否通顺，可以利用$p(s) &#x3D; p(w_1, w_2, w_3,…,w_n)$ 来表示，即这个单词序列出现的概率。 如：$p( It\ is\ good) &amp;g">
+<meta property="article:published_time" content="2020-01-14T04:21:52.803Z">
+<meta property="article:modified_time" content="2020-03-28T13:14:25.895Z">
 <meta property="article:author" content="Xiaoning Fan">
 <meta name="twitter:card" content="summary">
 
@@ -116,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://xnfan.github.io/"/>
+  <link rel="canonical" href="https://xnfan.github.io/2020/01/14/语言模型/"/>
 
 
 
 
 
-  <title>Xiaoning's Home</title>
+  <title>语言模型学习 | Xiaoning's Home</title>
   
 
 
@@ -141,8 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +236,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -267,9 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/14/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/" itemprop="url">语言模型学习</a></h1>
+          <h1 class="post-title" itemprop="name headline">语言模型学习</h1>
         
 
         <div class="post-meta">
@@ -341,8 +340,7 @@
       
 
       
-        
-          <h1 id="语言模型学习"><a href="#语言模型学习" class="headerlink" title="语言模型学习"></a>语言模型学习</h1><p>语言模型 (Language Model) 用来判断一个语句是否符合语义。在实际应用中，常常利用概率来解决这一问题。</p>
+        <h1 id="语言模型学习"><a href="#语言模型学习" class="headerlink" title="语言模型学习"></a>语言模型学习</h1><p>语言模型 (Language Model) 用来判断一个语句是否符合语义。在实际应用中，常常利用概率来解决这一问题。</p>
 <p>给定一个句子 $s$，由 $n$ 个单词 $w_1, w_2, w_3,…,w_n$ 组成，为了判断这个句子是否通顺，可以利用<br>$p(s) = p(w_1, w_2, w_3,…,w_n)$ 来表示，即这个单词序列出现的概率。</p>
 <p>如：$p( It\ is\ good) &gt; p(good\ is\ it)$ 可以认为前面一句话在语法上更为合理。</p>
 <h2 id="Markov-Assumption"><a href="#Markov-Assumption" class="headerlink" title="Markov Assumption"></a>Markov Assumption</h2><p>在应用中，我们常常不会直接用联合概率分布来表示语句，而是利用 Markov Assumption 来进行计算。如一阶 Markov Assumption 情况下，$p(w_1, w_2, w_3,…,w_n) = p(w_1)p(w_2|w_1)p(w_3|w_2)…p(w_i|w_{i-1}) = p(w_1)\prod_{i=2}^np(w_i|w_{i-1})$。<br><br/>二阶，三阶或是更高阶同理。</p>
@@ -354,14 +352,10 @@
 <h4 id="Add-K-Smoothing"><a href="#Add-K-Smoothing" class="headerlink" title="Add-K Smoothing"></a>Add-K Smoothing</h4><p>$p(w_i|w_{i-1})_{Add-K} = \frac{c(w_i-1,w_i)+K}{c(w_i-1)+K|V|}$</p>
 <h4 id="Interpolation-Smoothing"><a href="#Interpolation-Smoothing" class="headerlink" title="Interpolation Smoothing"></a>Interpolation Smoothing</h4><p>计算 $Trigram$ 时同时考虑 $Unigram$ 和 $Bigram$<br><br/><br> $p(w_i|w_{i-1}, w_{i-2}) = \lambda_1p(w_i|w_{i-1}, w_{i-2})+\lambda_2p(w_i|w_{i-1})+\lambda_3p(w_i)$<br><br/>$\lambda_1+\lambda_2+\lambda_3 = 1$</p>
 <h4 id="Good-Turning-Smoothing"><a href="#Good-Turning-Smoothing" class="headerlink" title="Good-Turning Smoothing"></a>Good-Turning Smoothing</h4><p>$N_c$ 代表语料中出现 $c$ 次的单词个数<br>$p_{GT} = \frac{(c+1)N_{c+1}}{N_cN}$，考虑了没有出现过的单词的概率，需要引入平滑解决 $N_c$ 比较稀疏时的情况。<br><br/><br/>语言模型同样可以作为一种生成模型，用来生成新的语句。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/01/14/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+
+
+
       
     </div>
     
@@ -378,12 +372,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -393,10 +387,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -404,6 +399,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -424,8 +423,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -480,6 +488,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#语言模型学习"><span class="nav-number">1.</span> <span class="nav-text">语言模型学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markov-Assumption"><span class="nav-number">1.1.</span> <span class="nav-text">Markov Assumption</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#N-Gram"><span class="nav-number">1.2.</span> <span class="nav-text">N-Gram</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Unigram"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Unigram</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bigram"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">Bigram</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何评价？"><span class="nav-number">1.3.</span> <span class="nav-text">如何评价？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平滑"><span class="nav-number">1.4.</span> <span class="nav-text">平滑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-One-Smoothing"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">Add-One Smoothing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Add-K-Smoothing"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">Add-K Smoothing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Interpolation-Smoothing"><span class="nav-number">1.4.0.3.</span> <span class="nav-text">Interpolation Smoothing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Good-Turning-Smoothing"><span class="nav-number">1.4.0.4.</span> <span class="nav-text">Good-Turning Smoothing</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -620,6 +644,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
